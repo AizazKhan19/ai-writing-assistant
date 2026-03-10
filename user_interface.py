@@ -17,7 +17,7 @@ user_input = st.text_input("💡 Topic ", placeholder="Enter your topic here..."
 
 # generate content button
 st.markdown("")
-clicked =st.button('✨ Generate ')
+clicked =st.button('✨ Generate ', key='generate_button')
 
 
 if clicked:
