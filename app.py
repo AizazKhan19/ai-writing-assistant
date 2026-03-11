@@ -1,4 +1,5 @@
 import streamlit as st
+from api_handler import generate_content
 
 # page configuration
 st.set_page_config(
@@ -29,7 +30,12 @@ if clicked:
         st.error("⚠️ Please enter a topic to generate content!")
     # if generated button is clicked and content type and user input are valid, it shows the generated content
     else:
+        # show loading spinner
+        with st.spinner("✨ Generating content..."):
+            generated_content = generate_content(content_type, user_input)
+
+        # display generated content
         st.markdown('---')
         st.subheader('📄 Generated Content')
-        st.code(user_input, language=None)
+        st.code(generated_content, language=None)
         st.success("✅ Content generated successfully!")
